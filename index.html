@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Engraving Cleaner</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+      textarea {
+        width: 600px;
+        height: 600px;
+        margin-bottom: 10px;
+      }
+      button {
+        padding: 10px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="display: flex; flex-direction: row; gap: 10px;">
+      <div style="display: flex; flex-direction: column">
+        <h2>Paste Engraving Text</h2>
+        <textarea id="input"></textarea>
+        <button onclick="cleanText()">Clean</button>
+      </div>
+      <div style="display: flex; flex-direction: column">
+        <h2>Output</h3>
+        <textarea id="output"></textarea>
+        <script src="renderer.js"></script>
+      </div>
+    </div>
+  </body>
+</html>

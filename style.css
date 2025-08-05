@@ -1,0 +1,7 @@
+#output {
+  tab-size: 4; /* standard wide tab */
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  font-family: monospace; /* use a fixed-width font for alignment */
+  color: blue;
+}
