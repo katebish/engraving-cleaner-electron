@@ -11,7 +11,9 @@ if (process.env.NODE_ENV === 'development') {
 
 function createWindow() {
   const win = new BrowserWindow({
-    fullscreen: true,
+    width: 1200,      // fallback width
+    height: 800,      // fallback height
+    show: false,      // hide until ready
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
@@ -19,6 +21,11 @@ function createWindow() {
   });
 
   win.loadFile('index.html');
+
+  win.once('ready-to-show', () => {
+    win.maximize(); // use full available screen
+    win.show();
+  });
 
   // win.webContents.openDevTools();
 }
