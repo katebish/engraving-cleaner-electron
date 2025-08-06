@@ -3,6 +3,10 @@ function cleanText() {
 
   const cleaned = 
   input
+    // Trim each line
+    .split(/\r?\n/)
+    .map(line => line.trim())
+    .join('\n')
     // Remove lines with exactly 10 dashes followed immediately by Back Plate line(s)
     .replace(/^-{10}\r?\nBack Plate:.*\r?\n?/gm, "")
     // Replace lines with exactly 20 dashes or a single dot line with a blank line
