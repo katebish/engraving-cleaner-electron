@@ -1,12 +1,24 @@
-function cleanText() {
-  const input = document.getElementById("input").value;
+const getInputTextArea = () => document.getElementById("inputTextArea");
+const getOutputTextArea = () => document.getElementById("outputTextArea");
 
-  const cleaned = 
-  input
+function clearInputText() {
+  const inputTextArea = getInputTextArea();
+  inputTextArea.value = "";
+}
+
+function clearOutputText() {
+  const outputTextArea = getOutputTextArea();
+  outputTextArea.value = "";
+}
+
+function cleanText() {
+  const inputTextArea = getInputTextArea().value;
+
+  const cleaned = inputTextArea
     // Trim each line
     .split(/\r?\n/)
-    .map(line => line.trim())
-    .join('\n')
+    .map((line) => line.trim())
+    .join("\n")
     // Remove lines with exactly 10 dashes followed immediately by Back Plate line(s)
     .replace(/^-{10}\r?\nBack Plate:.*\r?\n?/gm, "")
     // Replace lines with exactly 20 dashes or a single dot line with a blank line
@@ -20,19 +32,18 @@ function cleanText() {
     .filter(Boolean)
     .join("\n");
 
-  document.getElementById("outputTextArea").value = cleaned;
+  getOutputTextArea().value = cleaned;
 }
 
 function copyOutputTextarea() {
-  const textarea = document.getElementById("outputTextArea");
+  const outputTextArea = getOutputTextArea();
 
-  navigator.clipboard.writeText(textarea.value)
-        .catch(() => alert('Failed to copy.'));
+  navigator.clipboard.writeText(outputTextArea.value).catch(() => alert("Failed to copy."));
 
   window.getSelection().removeAllRanges();
 }
 
-document.getElementById("outputTextArea").addEventListener("keydown", function (e) {
+getOutputTextArea().addEventListener("keydown", function (e) {
   if (e.key === "Tab") {
     e.preventDefault();
 

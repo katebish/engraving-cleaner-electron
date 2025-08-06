@@ -41,9 +41,11 @@ textarea {
   flex-direction: row;
   justify-content: space-between;
 }
-#sectionHeaderArea button {
-  height: fit-content;
+#sectionHeaderArea #sectionHeaderButtons {
   margin-top: auto;
+}
+#sectionHeaderArea #sectionHeaderButtons button {
+  height: fit-content;
   margin-bottom: 10px;
   padding: 5px 10px;
 }

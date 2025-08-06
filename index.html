@@ -10,14 +10,20 @@
       <div id="inputArea">
         <div id="sectionHeaderArea">
           <h2>Paste Engraving Text</h2>
-          <button onclick="cleanText()">Clean</button>
+          <div id="sectionHeaderButtons">
+            <button onclick="clearInputText()">Clear</button>
+            <button onclick="cleanText()">Clean</button>
+          </div>
         </div>
-        <textarea id="input"></textarea>
+        <textarea id="inputTextArea"></textarea>
       </div>
       <div id="outputArea">
         <div id="sectionHeaderArea">
           <h2>Output</h2>
-          <button onclick="copyOutputTextarea()">Copy</button>
+          <div id="sectionHeaderButtons">
+            <button onclick="clearOutputText()">Clear</button>
+            <button onclick="copyOutputTextarea()">Copy</button>
+          </div>
         </div>
         <textarea id="outputTextArea"></textarea>
       </div>
