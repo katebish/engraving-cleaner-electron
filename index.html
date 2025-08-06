@@ -2,34 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
     <title>Engraving Cleaner</title>
-    <style>
-      body {
-        font-family: sans-serif;
-        padding: 20px;
-      }
-      textarea {
-        width: 600px;
-        height: 600px;
-        margin-bottom: 10px;
-      }
-      button {
-        padding: 10px 20px;
-      }
-    </style>
   </head>
   <body>
-    <div style="display: flex; flex-direction: row; gap: 10px;">
-      <div style="display: flex; flex-direction: column">
-        <h2>Paste Engraving Text</h2>
+    <div id="container">
+      <div id="inputArea">
+        <div id="sectionHeaderArea">
+          <h2>Paste Engraving Text</h2>
+          <button onclick="cleanText()">Clean</button>
+        </div>
         <textarea id="input"></textarea>
-        <button onclick="cleanText()">Clean</button>
       </div>
-      <div style="display: flex; flex-direction: column">
-        <h2>Output</h3>
-        <textarea id="output"></textarea>
-        <script src="renderer.js"></script>
+      <div id="outputArea">
+        <div id="sectionHeaderArea">
+          <h2>Output</h2>
+          <button onclick="copyOutputTextarea()">Copy</button>
+        </div>
+        <textarea id="outputTextArea"></textarea>
       </div>
+      <script src="renderer.js"></script>
     </div>
   </body>
 </html>

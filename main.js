@@ -10,8 +10,7 @@ const { app, BrowserWindow } = require('electron');
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: 1300,
-    height: 800,
+    fullscreen: true,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
@@ -19,6 +18,8 @@ function createWindow() {
   });
 
   win.loadFile('index.html');
+
+  // win.webContents.openDevTools();
 }
 
 app.whenReady().then(createWindow);

@@ -1,23 +1,34 @@
 function cleanText() {
   const input = document.getElementById("input").value;
 
-  const cleaned = input
+  const cleaned = 
+  input
+    // Remove lines with exactly 10 dashes followed immediately by Back Plate line(s)
     .replace(/^-{10}\r?\nBack Plate:.*\r?\n?/gm, "")
-    .split(/^(?:-{20}|\.)\r?\n?/gm)
+    // Replace lines with exactly 20 dashes or a single dot line with a blank line
+    .replace(/^(-{20}|[.])$/gm, "\n")
+    // Get rid of top and bottom blank lines
+    .trim()
+    // Split on blank lines (2 or more newlines)
+    .split(/\n\s*\n/)
+    // Trim each block and replace internal newlines with tabs
     .map((block) => block.trim().replace(/\r?\n/g, "\t"))
     .filter(Boolean)
     .join("\n");
 
-  document.getElementById("output").value = cleaned;
+  document.getElementById("outputTextArea").value = cleaned;
 }
 
-document.addEventListener("keydown", function (e) {
-  if ((e.ctrlKey || e.metaKey) && (e.key === "z" || e.key === "Z")) {
-    return;
-  }
-});
+function copyOutputTextarea() {
+  const textarea = document.getElementById("outputTextArea");
 
-document.getElementById("output").addEventListener("keydown", function (e) {
+  navigator.clipboard.writeText(textarea.value)
+        .catch(() => alert('Failed to copy.'));
+
+  window.getSelection().removeAllRanges();
+}
+
+document.getElementById("outputTextArea").addEventListener("keydown", function (e) {
   if (e.key === "Tab") {
     e.preventDefault();
 

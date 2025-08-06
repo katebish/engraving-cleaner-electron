@@ -7,7 +7,7 @@
     "dist-win": "electron-packager . EngravingCleaner --platform=win32 --arch=x64 --overwrite --out=dist"
   },
   "devDependencies": {
-    "electron": "^29.0.0",
+    "electron": "^29.4.6",
     "electron-packager": "^17.1.2",
     "electron-reload": "^2.0.0-alpha.1"
   }

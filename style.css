@@ -1,7 +1,49 @@
-#output {
-  tab-size: 4; /* standard wide tab */
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  font-family: monospace; /* use a fixed-width font for alignment */
-  color: blue;
+html, body {
+  height: 100vh;
+  margin: 0;
+  font-family: sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+textarea {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 10px;
+}
+/* Main layout container */
+#container {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  height: 100%;
+}
+/* Left (input) */
+#inputArea {
+  display: flex;
+  flex-direction: column;
+  flex: 0.35;
+}
+/* Right (output) */
+#outputArea {
+  display: flex;
+  flex-direction: column;
+  flex: 0.65;
+}
+#outputTextArea {
+  tab-size: 8; /* standard wide tab */
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+}
+/* Left and Right (input and output) */
+#sectionHeaderArea {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#sectionHeaderArea button {
+  height: fit-content;
+  margin-top: auto;
+  margin-bottom: 10px;
+  padding: 5px 10px;
 }
