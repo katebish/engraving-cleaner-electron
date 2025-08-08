@@ -14,11 +14,33 @@ textarea {
 /* Main layout container */
 #container {
   display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+#headerAreaContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#headerTextInputs {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.input-group label {
+  margin-right: 3px;
+}
+#textAreasContainer {
+  display: flex;
   flex-direction: row;
   gap: 30px;
   height: 100%;
 }
 /* Left (input) */
+#additional-column-inputs {
+  display: flex;
+  flex-direction: column;
+}
 #inputArea {
   display: flex;
   flex-direction: column;

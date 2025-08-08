@@ -1,6 +1,33 @@
 const getInputTextArea = () => document.getElementById("inputTextArea");
 const getOutputTextArea = () => document.getElementById("outputTextArea");
 
+function insertAdditionalColumns() {
+  const size = document.getElementById("sizeInput").value;
+  const tray = document.getElementById("trayInput").value;
+  const orderNum = document.getElementById("orderNumInput").value;
+
+  const outputTextArea = getOutputTextArea();
+  const outputText = outputTextArea.value;
+
+  const newOutputText = outputText
+    .split("\n")
+    .map((line, lineIndex) => {
+      const columns = line.split("\t");
+      let columnIndex = columns.length;
+      while (columnIndex <= 3) {
+        columns.push("");
+        columnIndex ++;
+      }
+      columns.push(size);
+      columns.push(`${tray} AW${orderNum}`);
+      columns.push(lineIndex + 1);
+      return columns.join("\t");
+    })
+    .join("\n");
+  
+    outputTextArea.value = newOutputText;
+}
+
 function clearInputText() {
   const inputTextArea = getInputTextArea();
   inputTextArea.value = "";
