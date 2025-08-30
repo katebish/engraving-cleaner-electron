@@ -8,6 +8,9 @@ async function initPlateSizes() {
 
 const getInputTextArea = () => document.getElementById("inputTextArea");
 const getOutputTextArea = () => document.getElementById("outputTextArea");
+const getSizeInput = () => document.getElementById("sizeInput");
+const getTrayInput = () => document.getElementById("trayInput");
+const getAwNumInput = () => document.getElementById("awNumInput");
 const getOrderNumInput = () => document.getElementById("orderNumInput");
 const getEmailModeToggle = () => document.getElementById("emailModeToggle");
 
@@ -19,9 +22,9 @@ let itemSizes = [];
 
 function clearInputText() {
   getInputTextArea().value = "";
-  document.getElementById("sizeInput").value = "";
-  document.getElementById("trayInput").value = "";
-  document.getElementById("awNumInput").value = "";
+  getSizeInput().value = "";
+  getTrayInput().value = "";
+  getAwNumInput().value = "";
   setOrderNumber("");
   itemSizes = [];
 }
@@ -125,12 +128,12 @@ function cleanEmailEngraving() {
 
 function insertAdditionalColumns() {
   const inEmailMode = getEmailModeToggle().checked;
-  const tray = document.getElementById("trayInput").value;
+  const tray = getTrayInput().value;
   const orderNum = (() => {
     if (inEmailMode) {
-      return document.getElementById("orderNumInput").value;
+      return getOrderNumInput().value;
     } else {
-      return "AW" + document.getElementById("awNumInput").value;
+      return "AW" + getAwNumInput().value;
     }
   })();
 
@@ -144,7 +147,7 @@ function insertAdditionalColumns() {
         if (inEmailMode) {
           return itemSizes[engravingSectionIndex];
         } else {
-          return document.getElementById("sizeInput").value;
+          return getSizeInput().value;
         }
       })();
 
@@ -194,6 +197,11 @@ getEmailModeToggle().addEventListener("change", (e) => {
   handleModeChange(e.target.checked);
 });
 
+getTrayInput().addEventListener("input", function (e) {
+  e.target.value = e.target.value.toUpperCase();
+});
+
+
 function handleModeChange(inEmailMode) {
   const sizeInputContainer = document.getElementById("sizeInputContainer");
   const awNumInputContainer = document.getElementById("awNumInputContainer");
@@ -215,10 +223,10 @@ function handleModeChange(inEmailMode) {
     cleanEmailEngravingButton.classList.add("hidden");
   }
 
-  document.getElementById("sizeInput").value = "";
-  document.getElementById("trayInput").value = "";
-  document.getElementById("awNumInput").value = "";
-  document.getElementById("orderNumInput").value = "";
+  getSizeInput().value = "";
+  getTrayInput().value = "";
+  getAwNumInput().value = "";
+  getOrderNumInput().value = "";
   clearInputText();
   clearOutputText();
 }
