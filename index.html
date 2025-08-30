@@ -7,19 +7,30 @@
   </head>
   <body>
     <div id="container">
+      <div id="headerEmailMode">
+          <label class="switch">
+            <input type="checkbox" id="emailModeToggle" checked />
+            <span class="slider"></span>
+          </label>
+          <div class="emailModeLabel">Email Mode</div>
+        </div>
       <div id="headerAreaContainer">
         <div id="headerTextInputs">
-          <div class="input-group">
+          <div id="sizeInputContainer" class="input-group">
             <label for="sizeInput">Size:</label>
             <input type="text" id="sizeInput" name="size" />
           </div>
-          <div class="input-group">
+          <div id="trayInputContainer" class="input-group">
             <label for="trayInput">Tray:</label>
             <input type="text" id="trayInput" name="tray" />
           </div>
-          <div class="input-group">
-            <label for="orderNumInput">AW:</label>
-            <input type="text" id="orderNumInput" name="orderNum" />
+          <div id="awNumInputContainer" class="input-group">
+            <label for="awNumInput">AW:</label>
+            <input type="text" id="awNumInput" name="awNum" />
+          </div>
+          <div id="orderNumInputContainer" class="input-group">
+            <label for="orderNumInput">Order Number:</label>
+            <input type="text" id="orderNumInput" name="orderNum" disabled readonly />
           </div>
         </div>
         <div id="headerButtons">
@@ -32,7 +43,8 @@
             <h2>Paste Engraving Text</h2>
             <div id="sectionHeaderButtons">
               <button onclick="clearInputText()">Clear</button>
-              <button onclick="cleanText()">Clean</button>
+              <button id="cleanTextButton" onclick="cleanText()">Clean Text</button>
+              <button id="cleanEmailEngravingButton" onclick="cleanEmailEngraving()">Clean Email</button>
             </div>
           </div>
           <textarea id="inputTextArea"></textarea>
