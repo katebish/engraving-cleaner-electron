@@ -2,3 +2,4 @@ node_modules/
 package-lock.json
 trash.txt
 trash.js
+.DS_Store
