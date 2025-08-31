@@ -92,7 +92,7 @@ function cleanEmailEngraving() {
     const itemCode = (() => {
       for (let i = engravingIndex; i >= 0; i--) {
         if (lines[i].startsWith("Item Code:")) {
-          return lines[i].match(/(?<=^Item Code:\s+)\S+$/m)[0];
+          return lines[i].trim().match(/(?<=^Item Code:\s+)\S+$/m)[0];
         }
       }
     })();
