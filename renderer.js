@@ -75,14 +75,14 @@ function cleanText() {
 function cleanEmailEngraving() {
   const inputTextArea = getInputTextArea().value;
 
-  const orderNumber = inputTextArea.match(/(?<=^Order No\s+)\S+$/m)[0];
+  const orderNumber = (inputTextArea.match(/\n\s*Order No\s+([^\n]+)/i) || [])[1]?.trim() || "ERROR";
   setOrderNumber(orderNumber);
 
   const lines = inputTextArea.split(/\r?\n/);
   // Find all "Engraving:" line indexes
   const engravingIndexes = [];
   lines.forEach((line, i) => {
-    if (line.startsWith("Engraving:") && !line.includes("(Back plates)")) {
+    if (line.includes("Engraving:") && !line.includes("(Back plates)")) {
       engravingIndexes.push(i);
     }
   });
@@ -96,7 +96,8 @@ function cleanEmailEngraving() {
         }
       }
     })();
-    itemSizes.push(getItemSize(itemCode));
+    const itemSizeFromFile = getItemSize(itemCode);
+    itemSizes.push(itemSizeFromFile || itemCode);
     if (!itemCode) {
       // TODO: Throw error
     }
@@ -110,6 +111,7 @@ function cleanEmailEngraving() {
 
       return lines
         .slice(engravingIndex + 1, nextEngravingIndex)
+        .filter(item => item.trim() !== "")
         .join("\n")
         .replace(/(--------------------)(?![\s\S]*--------------------)[\s\S]*$/, "$1");
     })();
@@ -174,7 +176,7 @@ function insertAdditionalColumns() {
 
 function getItemSize(itemCode) {
   const match = plateSizesArray.find(([code]) => code === itemCode);
-  return match ? match[1] : "ERROR";
+  return match ? match[1] : null;
 }
 
 getOutputTextArea().addEventListener("keydown", function (e) {
