@@ -157,12 +157,13 @@ function insertAdditionalColumns() {
         .split("\n")
         .map((line, lineIndex) => {
           const columns = line.split("\t");
-          let columnIndex = columns.length;
+          const originalColumnCount = columns.length;
+          let columnIndex = originalColumnCount;
           while (columnIndex <= 3) {
             columns.push("");
             columnIndex++;
           }
-          columns.push(size);
+          columns.push(`${size} ${originalColumnCount}L`);
           columns.push(`${tray} ${orderNum}`);
           columns.push(lineIndex + 1);
           return columns.join("\t");
