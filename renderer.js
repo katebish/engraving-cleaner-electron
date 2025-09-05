@@ -49,10 +49,10 @@ function getCleanText(inputText) {
       .split(/\r?\n/)
       .map((line) => line.trim())
       .join("\n")
-      // Remove lines with exactly 10 dashes followed immediately by Back Plate line(s)
-      .replace(/^-{10}\r?\nBack Plate:.*\r?\n?/gm, "")
-      // Replace lines with exactly 20 dashes or a single dot line with a blank line
-      .replace(/^(-{20}|[.])$/gm, "\n")
+      // Remove lines with exactly 2 dashes followed immediately by Back Plate line(s)
+      .replace(/^-{2}\r?\nBack Plate:.*\r?\n?/gm, "")
+      // Replace lines with exactly 3 dashes
+      .replace(/^(-{3})$/gm, "\n")
       // Get rid of top and bottom blank lines
       .trim()
       // Split on blank lines (2 or more newlines)
@@ -113,7 +113,7 @@ function cleanEmailEngraving() {
         .slice(engravingIndex + 1, nextEngravingIndex)
         .filter(item => item.trim() !== "")
         .join("\n")
-        .replace(/(--------------------)(?![\s\S]*--------------------)[\s\S]*$/, "$1");
+        .replace(/(---)(?![\s\S]*---)[\s\S]*$/, "$1");
     })();
 
     return { itemCode, engravingContent };
