@@ -75,7 +75,8 @@ function cleanText() {
 function cleanEmailEngraving() {
   const inputTextArea = getInputTextArea().value;
 
-  const orderNumber = (inputTextArea.match(/\n\s*Order No\s+([^\n]+)/i) || [])[1]?.trim() || "ERROR";
+  const orderNumber =
+    (inputTextArea.match(/\n\s*Order No\s+([^\n]+)/i) || [])[1]?.trim() || "ERROR";
   setOrderNumber(orderNumber);
 
   const lines = inputTextArea.split(/\r?\n/);
@@ -111,7 +112,7 @@ function cleanEmailEngraving() {
 
       return lines
         .slice(engravingIndex + 1, nextEngravingIndex)
-        .filter(item => item.trim() !== "")
+        .filter((item) => item.trim() !== "")
         .join("\n")
         .replace(/(---)(?![\s\S]*---)[\s\S]*$/, "$1");
     })();
@@ -203,7 +204,6 @@ getEmailModeToggle().addEventListener("change", (e) => {
 getTrayInput().addEventListener("input", function (e) {
   e.target.value = e.target.value.toUpperCase();
 });
-
 
 function handleModeChange(inEmailMode) {
   const sizeInputContainer = document.getElementById("sizeInputContainer");
