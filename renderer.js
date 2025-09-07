@@ -20,18 +20,22 @@ const setOrderNumber = (orderNumber) => {
 
 let itemSizes = [];
 
-function clearInputText() {
-  getInputTextArea().value = "";
+function clearData() {
   getSizeInput().value = "";
-  getTrayInput().value = "";
   getAwNumInput().value = "";
   setOrderNumber("");
   itemSizes = [];
 }
 
+function clearInputText() {
+  getInputTextArea().value = "";
+  getTrayInput().value = "";
+  clearData();
+}
+
 function clearOutputText() {
-  const outputTextArea = getOutputTextArea();
-  outputTextArea.value = "";
+  getOutputTextArea().value = "";
+  clearData();
 }
 
 function copyOutputTextarea() {
@@ -164,7 +168,7 @@ function insertAdditionalColumns() {
             columns.push("");
             columnIndex++;
           }
-          columns.push(`${size} ${originalColumnCount}L`);
+          columns.push(`${size} ${size.includes("x") ? originalColumnCount + "L" : ""}`);
           columns.push(`${tray} ${orderNum}`);
           columns.push(lineIndex + 1);
           return columns.join("\t");
